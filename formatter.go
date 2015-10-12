@@ -106,7 +106,9 @@ func (p *printer) printValue(v reflect.Value, showType, quote bool) {
 		p.printInline(v, v.Bool(), showType)
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		p.printInline(v, v.Int(), showType)
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+		fmt.Fprintf(p, "%d", v.Uint())
+	case reflect.Uintptr:
 		p.printInline(v, v.Uint(), showType)
 	case reflect.Float32, reflect.Float64:
 		p.printInline(v, v.Float(), showType)

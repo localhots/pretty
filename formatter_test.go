@@ -43,6 +43,11 @@ var gosyntax = []test{
 	{1.0, "float64(1)"},
 	{[]int(nil), "[]int(nil)"},
 	{[0]int{}, "[0]int{}"},
+	{[]uint{1, 2, 3}, "[]uint{1, 2, 3}"},
+	{[]uint8{1, 2, 3}, "[]uint8{1, 2, 3}"},
+	{[]uint16{1, 2, 3}, "[]uint16{1, 2, 3}"},
+	{[]uint32{1, 2, 3}, "[]uint32{1, 2, 3}"},
+	{[]uint64{1, 2, 3}, "[]uint64{1, 2, 3}"},
 	{complex(1, 0), "(1+0i)"},
 	//{make(chan int), "(chan int)(0x1234)"},
 	{unsafe.Pointer(uintptr(unsafe.Pointer(&long))), fmt.Sprintf("unsafe.Pointer(0x%02x)", uintptr(unsafe.Pointer(&long)))},
@@ -126,7 +131,7 @@ var gosyntax = []test{
 		},
 		`[]interface {}{
     pretty.LongStructTypeName{},
-    []uint8{0x1, 0x2, 0x3},
+    []uint8{1, 2, 3},
     pretty.T{x:3, y:4},
     pretty.LongStructTypeName{
         longFieldName:      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
