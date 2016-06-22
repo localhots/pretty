@@ -154,6 +154,15 @@ func (p *printer) printValue(v reflect.Value, showType, quote bool) {
 		writeByte(p, '}')
 	case reflect.Struct:
 		t := v.Type()
+		if ts := t.String(); ts == "time.Time" || ts == "&time.Time" {
+			tim := v.Interface().(interface {
+				Format(string) string
+			})
+
+			io.WriteString(p, t.String()+"{ "+tim.Format("02 Jan 2006 15:04:05 -0700")+" }")
+			break
+		}
+
 		if v.CanAddr() {
 			addr := v.UnsafeAddr()
 			vis := visit{addr, t}
