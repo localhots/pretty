@@ -159,7 +159,7 @@ func (p *printer) printValue(v reflect.Value, showType, quote bool) {
 				Format(string) string
 			})
 
-			io.WriteString(p, t.String()+"{ "+tim.Format("02 Jan 2006 15:04:05 -0700")+" }")
+			io.WriteString(p, t.String()+"{ "+tim.Format("02 Jan 2006 15:04:05.000000000 -0700")+" }")
 			break
 		}
 
